@@ -1,8 +1,11 @@
-# File: variables.tf
-
 variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
+}
+
+variable "subnet_id" {
+  type = string
+  description = "subent id to given by user"
 }
 
 variable "location" {

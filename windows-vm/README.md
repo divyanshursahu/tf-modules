@@ -20,6 +20,7 @@ module "windows_vm" {
   create_data_disk    = true
   data_disk_size_gb   = 200
   data_disk_type      = "Premium_LRS"
+  subnet_id           = <subnet-id>
 }
 
 output "vm_public_ip" {
