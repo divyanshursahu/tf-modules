@@ -1,4 +1,3 @@
-
 resource "azurerm_storage_account" "storage" {
   name                     = var.storage_account_name
   resource_group_name      = var.resource_group_name
@@ -19,4 +18,11 @@ resource "azurerm_storage_share" "file_shares" {
   name                 = each.value.name
   storage_account_name = azurerm_storage_account.storage.name
   quota                = each.value.quota
+}
+
+resource "azurerm_storage_container" "containers" {
+  for_each              = { for idx, container in var.containers : container.name => container }
+  name                  = each.value.name
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = each.value.container_access_type
 }

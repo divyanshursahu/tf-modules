@@ -44,3 +44,12 @@ variable "file_shares" {
   }))
   default = []
 }
+
+variable "containers" {
+  description = "List of containers to create"
+  type = list(object({
+    name                  = string
+    container_access_type = optional(string, "private")
+  }))
+  default = []
+}

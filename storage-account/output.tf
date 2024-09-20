@@ -27,3 +27,8 @@ output "file_share_urls" {
   description = "URLs of the created file shares"
   value       = { for name, share in azurerm_storage_share.file_shares : name => share.url }
 }
+
+output "container_names" {
+  description = "Names of the created blob containers"
+  value       = [for container in azurerm_storage_container.containers : container.name]
+}

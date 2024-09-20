@@ -36,6 +36,17 @@ module "storage_account" {
       quota = 200
     }
   ]
+  
+  containers = [
+    {
+      name = "container1"
+      # container_access_type defaults to "private"
+    },
+    {
+      name                  = "container2"
+      container_access_type = "blob"
+    }
+  ]
 }
 
 output "storage_account_name" {
@@ -48,6 +59,10 @@ output "primary_blob_endpoint" {
 
 output "file_share_urls" {
   value = module.storage_account.file_share_urls
+}
+
+output "container_names" {
+  value = module.storage_account.container_names
 }
 
 output "network_rules" {
