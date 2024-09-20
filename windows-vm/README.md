@@ -2,7 +2,7 @@
 
 usage:
 
-'''
+```
 windows-vm:
 
 provider "azurerm" {
@@ -30,4 +30,4 @@ output "data_disk_id" {
   value = module.windows_vm.data_disk_id
 }
 
-'''
+```
