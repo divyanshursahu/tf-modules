@@ -76,3 +76,25 @@ variable "data_disk_type" {
   type        = string
   default     = "Standard_LRS"
 }
+
+variable "create_nsg" {
+  description = "Whether to create a Network Security Group"
+  type        = bool
+  default     = false
+}
+
+variable "nsg_rules" {
+  description = "List of NSG rules"
+  type = list(object({
+    name                       = string
+    priority                   = number
+    direction                  = string
+    access                     = string
+    protocol                   = string
+    source_port_range          = string
+    destination_port_range     = string
+    source_address_prefix      = string
+    destination_address_prefix = string
+  }))
+  default = []
+}
