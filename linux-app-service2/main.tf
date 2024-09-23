@@ -6,10 +6,9 @@ resource "azurerm_linux_web_app" "this" {
 
   site_config {
     application_stack {
-      docker_image     = var.stack_config.docker_image
-      docker_image_tag = var.stack_config.docker_image_tag
-    }
+      docker_image_name = var.stack_config.docker_image
+      
   }
 }
-
+}
 

@@ -21,7 +21,6 @@ variable "service_plan_id" {
 variable "stack_config" {
   type = object({
     docker_image     = string
-    docker_image_tag = string
   })
   description = "Application stack configuration for the main app service"
 }
