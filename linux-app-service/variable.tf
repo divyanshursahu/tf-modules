@@ -18,11 +18,21 @@ variable "app_service_name" {
   description = "Name of the App Service"
 }
 
-variable "stack_config" {
-  type = object({
-    docker_image     = string
-    docker_image_tag = string
-  })
-  description = "Application stack configuration for the main app service"
+variable "docker_image" {
+  description = "Docker image to use (e.g., 'nginx', 'node', etc.)"
+  type        = string
 }
+
+variable "docker_tag" {
+  description = "Docker image tag (e.g., 'latest', 'alpine')"
+  type        = string
+  default     = "latest"
+}
+# variable "stack_config" {
+#   type = object({
+#     docker_image     = string
+#     docker_image_tag = string
+#   })
+#   description = "Application stack configuration for the main app service"
+# }
 

@@ -1,18 +1,14 @@
-resource "azurerm_linux_web_app" "this" {
-  name                = var.app_service_name
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  service_plan_id     = var.service_plan_id
+resource "azurerm_app_service" "app" {
+  name                = var.app_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  app_service_plan_id = azurerm_app_service_plan.asp.id
 
   site_config {
-    application_stack {
-      docker_image     = var.stack_config.docker_image
-      docker_image_tag = var.stack_config.docker_image_tag
-    }
+    linux_fx_version = "DOCKER|${var.docker_image}:${var.docker_tag}"  # Specify the image and tag
+  }
+
+  app_settings = {
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"  # Disable app service storage for Docker containers
   }
 }
-
-
-
-
-
