@@ -34,4 +34,15 @@ variable "create_deployment_slot" {
   default = false
 }
 
+variable "ip_restriction" {
+  description = "Optional IP restriction block"
+  type = object({
+    action                    = string
+    headers                   = list(string)
+    name                      = string
+    priority                  = number
+    virtual_network_subnet_id = string
+  })
+  default = null
+}
 
