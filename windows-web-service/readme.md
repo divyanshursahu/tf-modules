@@ -51,7 +51,7 @@ module "windows_webapp" {
     headers                   = []
     name                      = "allow_ag_access"
     priority                  = 10
-    virtual_network_subnet_id = "/subscriptions/bbd37986-1004-47ed-afcd-838043c23cba/resourceGroups/AppSure_Uat_Hosting/providers/Microsoft.Network/virtualNetworks/Uat-AppSure-Trawick/subnets/uat-ag-appsure-trawick-subnet"
+    virtual_network_subnet_id = ""
   }
 }
 
