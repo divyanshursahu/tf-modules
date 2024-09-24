@@ -34,6 +34,31 @@ variable "create_deployment_slot" {
   default = false
 }
 
+variable "ftps_state" {
+  type    = string
+  default = "Disabled"
+}
+
+variable "ip_restriction_default_action" {
+  type    = string
+  default = "Allow"
+}
+
+variable "vnet_route_all_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "current_stack" {
+  type    = string
+  default = "dotnet"
+}
+
+variable "dotnet_version" {
+  type    = string
+  default = "v6.0"
+}
+
 variable "ip_restriction" {
   description = "Optional IP restriction block"
   type = object({
