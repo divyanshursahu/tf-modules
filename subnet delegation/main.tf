@@ -41,4 +41,25 @@ module "subnet" {
   delegated_service_name   = "Microsoft.ContainerInstance/containerGroups"
   delegated_service_actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
 }
+
+ service_delegation {
+      name    = var.enable_delegation[count.index] ? var.delegated_service_name : ""
+      actions = var.enable_delegation[count.index] ? var.delegated_service_actions : []
+
+variable "enable_delegation" {
+  description = "Whether to enable subnet delegation for each subnet"
+  type        = list(bool)
+}
+
+variable "delegated_service_name" {
+  description = "The name of the service to delegate the subnet to"
+  type        = string
+  default     = "Microsoft.ContainerInstance/containerGroups"
+}
+
+variable "delegated_service_actions" {
+  description = "The list of actions to allow for the delegated service"
+  type        = list(string)
+  default     = ["Microsoft.Network/virtualNetworks/subnets/action"]
+}
 ```
